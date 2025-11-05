@@ -27,6 +27,6 @@ app.use('/', pageRoute);
 app.use('/users', userRoute);
 
 
-app.listen(8000, () => {
+app.listen(process.env.PORT, () => {
     console.log("server running:8000")
 })

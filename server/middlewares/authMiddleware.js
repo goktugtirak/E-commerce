@@ -23,30 +23,27 @@ const checkUser = async (req, res, next) => {
 }
 
 const authenticateToken = async (req, res, next) => {
-
-    try{
+    try {
         const token = req.cookies.jwt;
 
-        if(token){
-            jwt.verify(token, process.env.JWT_SECRET,async (err, decodedToken) => {
-                if(err){
+        if (token) {
+            jwt.verify(token, process.env.JWT_SECRET, async (err, _) => {
+                if (err) {
                     console.log(err.message);
-                    res.redirect("/login");
-                    next();
-                }else{
+                    return res.redirect("/login");
+                } else {
                     next();
                 }
             })
-        }else{
-            res.redirect("/login");
+        } else {
+            return res.redirect("/login");
         }
-    }catch(error){
+    } catch (error) {
         res.status(401).json({
             succeded: false,
-            error: "Not authorized"
+            error: error.message
         });
     }
-
 };
 
-export {authenticateToken, checkUser};
+export { authenticateToken, checkUser };

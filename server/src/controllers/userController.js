@@ -78,10 +78,10 @@ const logoutUser = (req, res) => {
         });
     
         res.redirect("/");
-    }catch{
+    }catch(error){
         res.status(500).json({
             succeded: false,
-            error,
+            error: error.message,
         });
     }
 };

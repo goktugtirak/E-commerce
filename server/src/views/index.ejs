@@ -15,7 +15,9 @@
                 <a href="/" class="logo">MyShop</a>
                 <div class="nav-auth">
                     <% if (user) { %>
-                        <span class="welcome-user"><%= user.username %></span>
+                        <form action="/users/profile" method="GET" class="logout-form">
+                            <button type="submit" class="btn btn-outline"><%= user.username %></button>
+                        </form>
                         <form action="/users/logout" method="POST" class="logout-form">
                             <button type="submit" class="btn btn-outline">Çıkış Yap</button>
                         </form>

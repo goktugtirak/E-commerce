@@ -18,6 +18,9 @@
                         <form action="/users/profile" method="GET" class="logout-form">
                             <button type="submit" class="btn btn-outline"><%= user.username %></button>
                         </form>
+                        <form action="/cart" method="GET">
+                            <button type="submit" class="btn btn-outline">Sepetim</button>
+                        </form>
                         <form action="/users/logout" method="POST" class="logout-form">
                             <button type="submit" class="btn btn-outline">Çıkış Yap</button>
                         </form>
@@ -53,7 +56,13 @@
                                     <h3><%= product.name %></h3>
                                     <p><%= product.description %></p>
                                     <p class="product-price"><%= product.price %> ₺</p>
-                                    <button class="btn btn-primary full-width">Sepete Ekle</button>
+                                    <!--#########################################################-->
+                                    <form action="/cart/add-to-cart" method="POST">
+                                        <input type="hidden" name="quantity" value="1">
+                                        <input type="hidden" name="productId" value="<%= product._id %>">
+                                        <button class="btn btn-primary full-width">Sepete Ekle</button>
+                                    </form>
+                                    <!--//#########################################################-->
                                 </div>
                             </div>
         

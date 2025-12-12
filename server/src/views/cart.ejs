@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepetim</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/cart.css">
+</head>
+<body>
+    <%- include('partials/_header') %>
+
+    <div class="cart-container">
+        <h1>Alışveriş Sepetim</h1>
+
+        <% if (!cart || cart.products.length === 0) { %>
+            <div class="empty-message">
+                <p>Sepetinizde henüz ürün bulunmuyor.</p>
+                <a href="/" class="continue-shopping">Alışverişe Başla</a>
+            </div>
+        <% } else { %>
+            
+            <div class="cart-items">
+                <% cart.products.forEach(item => { %>
+                    <div class="cart-card">
+                        
+                        <div class="card-image">
+                            <img 
+    src="<%= (item.productId.images && item.productId.images.length > 0) ? '/img/' + item.productId.images[0] : 'https://via.placeholder.com/150' %>" 
+    alt="<%= item.productId.name %>"
+>
+                        </div>
+                        <div class="card-details">
+                            <h3 class="product-name"><%= item.productId.name %></h3>
+                            <p class="product-description">
+                                <%= item.productId.description %>
+                            </p>
+                            <div class="quantity-badge">Adet: <%= item.quantity %></div>
+                            <div class="quantity-wrapper">
+                                <form action="/cart/add-to-cart" method="POST">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <input type="hidden" name="productId" value="<%= item.productId._id %>">
+                                    <button class="btn">+</button>
+                                </form>
+                                <form action="/cart/add-to-cart" method="POST">
+                                    <input type="hidden" name="quantity" value="-1">
+                                    <input type="hidden" name="productId" value="<%= item.productId._id %>">
+                                    <button class="btn">-</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="card-actions">
+                            <div class="product-price">
+                                <%= item.productId.price * item.quantity %> TL
+                            </div>
+                            
+                            <form action="/cart/remove-from-cart?_method=DELETE" method="POST">
+                                <input type="hidden" name="productId" value="<%= item.productId._id %>">
+                                <button type="submit" class="btn-remove">Sepetten Çıkar</button>
+                            </form>
+                        </div>
+
+                    </div>
+                <% }); %>
+            </div>
+
+            <div class="cart-summary">
+                <% 
+                    let total = 0;
+                    cart.products.forEach(item => {
+                        total += item.productId.price * item.quantity;
+                    });
+                %>
+                <h2>Toplam Tutar: <span><%= total %> TL</span></h2>
+                <button class="btn-checkout">Ödemeye Geç</button>
+            </div>
+
+        <% } %>
+    </div>
+
+    <%- include('partials/_footer') %>
+</body>
+</html>

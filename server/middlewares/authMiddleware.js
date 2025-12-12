@@ -27,11 +27,16 @@ const authenticateToken = async (req, res, next) => {
         const token = req.cookies.jwt;
 
         if (token) {
-            jwt.verify(token, process.env.JWT_SECRET, async (err, _) => {
+            jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
                 if (err) {
                     console.log(err.message);
                     return res.redirect("/login");
                 } else {
+                    const user = await User.findById(decodedToken.userID);
+                    if (!user) {
+                        return res.redirect("/login");
+                    }
+                    req.user = user;
                     next();
                 }
             })

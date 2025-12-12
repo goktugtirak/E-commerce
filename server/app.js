@@ -1,8 +1,11 @@
 import express from 'express'
 import path from 'path';
 import cookieParser from 'cookie-parser';
+
 import pageRoute from './src/routes/pageRoute.js';
 import userRoute from './src/routes/userRoute.js';
+import cartRoute from './src/routes/cartRoute.js';
+
 import connect from './db.js';
 import { checkUser } from './middlewares/authMiddleware.js';
 
@@ -23,8 +26,9 @@ app.use(cookieParser());
 
 // routes
 app.use(checkUser);
-app.use('/', pageRoute);
+app.use('/cart', cartRoute);
 app.use('/users', userRoute);
+app.use('/', pageRoute);
 
 
 app.listen(process.env.PORT, () => {

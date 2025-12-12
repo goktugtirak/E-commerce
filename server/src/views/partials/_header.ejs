@@ -1,0 +1,23 @@
+    <header class="main-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a href="/" class="logo">MyShop</a>
+                <div class="nav-auth">
+                    <% if (user) { %>
+                        <form action="/users/profile" method="GET" class="logout-form">
+                            <button type="submit" class="btn btn-outline"><%= user.username %></button>
+                        </form>
+                        <form action="users/cart" method="GET">
+                            <button type="submit" class="btn btn-outline">Sepetim</button>
+                        </form>
+                        <form action="/users/logout" method="POST" class="logout-form">
+                            <button type="submit" class="btn btn-outline">Çıkış Yap</button>
+                        </form>
+                    <% } else { %>
+                        <a href="/users/login" class="btn btn-outline">Giriş Yap</a>
+                        <a href="/users/register" class="btn btn-primary">Kayıt Ol</a>
+                    <% } %>
+                </div>
+            </nav>
+        </div>
+    </header>

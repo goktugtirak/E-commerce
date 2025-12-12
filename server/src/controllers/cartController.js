@@ -67,9 +67,9 @@ const removeFromCart = async (req, res) => {
 
         res.redirect('/cart');
 
-    } catch{
-        console.error("Ürün silme hatası:", error);
-        res.status(500).json({ error: "Ürün sepetten silinemedi." });
+    } catch(err){
+        console.error(err);
+        res.status(500).json({ message: "Ürün sepetten silinemedi." , error: err.message});
     }
 }
 

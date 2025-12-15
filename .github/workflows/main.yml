@@ -28,3 +28,10 @@ jobs:
 
       - name: Lint Code
         run: npm run lint
+
+      - name: Security Scan(Synk)
+        uses: snyk/actions/node@master
+        env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+        args: --file=server/package.json

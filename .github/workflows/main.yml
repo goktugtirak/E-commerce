@@ -17,6 +17,13 @@ jobs:
 
       - name: Download Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect Secrets (Gitleaks)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install Node.js 18
         uses: actions/setup-node@v4

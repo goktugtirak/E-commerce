@@ -68,5 +68,5 @@ Projeyi lokal ortamda test etmek için:
 
 ## 📧 İletişim
 **Göktuğ Tırak**
-* LinkedIn: [Profil Linkin](https://www.linkedin.com/in/g%C3%B6ktu%C4%9F-t%C4%B1rak/)
-* GitHub: [Profil Linkin](https://github.com/goktugtirak)
+* 💼 LinkedIn: [Göktuğ Tırak](https://www.linkedin.com/in/g%C3%B6ktu%C4%9F-t%C4%B1rak/)
+* 🐙 GitHub: [@goktugtirak](https://github.com/goktugtirak)

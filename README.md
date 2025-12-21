@@ -1,4 +1,4 @@
-# 🛡️ Secure E-Commerce REST API (DevSecOps Focus)
+# 🛡️ Secure E-Commerce Web Application (Node.js & DevSecOps)
 
 ![CI/CD Pipeline](https://github.com/goktugtirak/E-commerce/actions/workflows/main.yml/badge.svg)
 ![Security Status](https://img.shields.io/badge/Security-Snyk%20%26%20Gitleaks-blue)
@@ -6,11 +6,23 @@
 ![Uptime](https://img.shields.io/badge/Status-Live-success)
 
 ## 🚀 Proje Hakkında
-Bu proje, modern **DevSecOps** prensipleri kullanılarak geliştirilmiş, güvenli ve ölçeklenebilir bir E-Ticaret Backend altyapısıdır.
+Bu proje, **Node.js** tabanlı, uçtan uca geliştirilmiş güvenli bir e-ticaret uygulamasıdır. Proje, hem kullanıcı dostu bir **web arayüzü (Frontend)** sunmakta hem de arka planda güçlü bir **Backend mimarisi** barındırmaktadır.
 
-Projenin temel amacı, sadece çalışan bir API yazmak değil; güvenli kod geliştirme yaşam döngüsünü (SDLC) otomatize etmek ve canlı sisteme (Production) güvenli bir dağıtım hattı kurmaktır.
+Temel amaç; sadece çalışan bir web sitesi yapmak değil, bu uygulamayı **DevSecOps** süreçleriyle (Docker, CI/CD, Güvenlik Taramaları) yönetilen modern bir mühendislik projesine dönüştürmektir.
 
-**🔗 Canlı URL (Base Endpoint):** [https://nodejs-shop-project-q4r3.onrender.com](https://nodejs-shop-project-q4r3.onrender.com)
+**🔗 Canlı URL (Web Arayüzü):** [https://nodejs-shop-project-q4r3.onrender.com](https://nodejs-shop-project-q4r3.onrender.com)
+
+---
+
+## ✨ Uygulama Özellikleri
+
+Proje, hem son kullanıcı arayüzüne (UI) hem de güçlü bir backend mantığına sahiptir:
+
+* **Kullanıcı Arayüzü (Frontend):** HTML/CSS ve EJS kullanılarak geliştirilmiş responsive tasarım.
+* **Güvenlik (Auth):** `JSON Web Token (JWT)` tabanlı güvenli kimlik doğrulama ve `bcrypt` ile şifreleme.
+* **Ürün Yönetimi:** MongoDB Atlas entegrasyonu ile ürünlerin listelenmesi.
+* **Dinamik Sepet Sistemi:** Kullanıcıya özel sepet oluşturma, ürün ekleme, çıkarma ve miktar güncelleme işlemleri.
+* **RESTful Mimari:** Standartlara uygun HTTP metodları (GET, POST) ve temiz kod prensipleriyle tasarlanmış yapı.
 
 ---
 
@@ -29,9 +41,10 @@ Her `git push` işlemi, GitHub Actions üzerinde çalışan şu güvenlik ve oto
 ## 🛠️ Teknoloji Yığını (Tech Stack)
 
 * **Backend:** Node.js, Express.js
+* **Frontend:** HTML5, CSS3, EJS (Templating Engine)
 * **Veritabanı:** MongoDB Atlas (Cloud)
 * **DevOps:** Docker, GitHub Actions
-* **Güvenlik Araçları:** Snyk, Gitleaks, NPM Audit
+* **Güvenlik Araçları:** Snyk, Gitleaks
 * **Cloud Provider:** Render
 
 ---
@@ -42,7 +55,7 @@ Projeyi lokal ortamda test etmek için:
 
 1.  **Repoyu Klonlayın:**
     ```bash
-    git clone [https://github.com/goktugtirak/E-commerce.git](https://github.com/goktugtirak/E-commerce.git)
+    git clone https://github.com/goktugtirak/E-commerce.git
     cd E-commerce/server
     ```
 

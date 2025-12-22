@@ -30,18 +30,18 @@ const authenticateToken = async (req, res, next) => {
             jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
                 if (err) {
                     console.log(err.message);
-                    return res.redirect("/login");
+                    return res.redirect("/users/login");
                 } else {
                     const user = await User.findById(decodedToken.userID);
                     if (!user) {
-                        return res.redirect("/login");
+                        return res.redirect("/users/login");
                     }
                     req.user = user;
                     next();
                 }
             })
         } else {
-            return res.redirect("/login");
+            return res.redirect("/users/login");
         }
     } catch (error) {
         res.status(401).json({
